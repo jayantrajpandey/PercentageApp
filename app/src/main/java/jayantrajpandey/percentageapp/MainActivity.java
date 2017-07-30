@@ -25,21 +25,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-
-            }
-        });
+        totalTextView = (TextView) findViewById(R.id.totalTextView);
+        percenrageTxt = (EditText) findViewById(R.id.percentageTxt);
+        numberTxt = (EditText) findViewById(R.id.numberTxt);
 
         Button calcBtn = (Button) findViewById(R.id.calcBtn);
         calcBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                float percentage = Float.parseFloat(percenrageTxt.getText().toString());
+                float dec = percentage / 100;
+                float total = dec * Float.parseFloat(numberTxt.getText().toString());
+                totalTextView.setText(Float.toString(total));
 
             }
         });
